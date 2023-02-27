@@ -1,0 +1,35 @@
+<head>
+    <link rel="shortcut icon" href="#">
+    <script type="module">
+        import {Pong} from "./pong.js";
+        let game;
+        function init() {
+            const canvas = document.getElementById('dvd');
+            game = new Pong(canvas, keyMap);
+            setInterval(update, 0);
+        }
+        
+        function update() {
+            game.mainLoop();
+        }
+        
+        window.onload = init;
+        
+        const keyMap = {};
+        
+        function handleKeyPress(e) {
+            keyMap[e.key] = true;
+        }
+        
+        function handleKeyUp(e) {
+            keyMap[e.key] = false;
+        }
+        
+        window.onkeydown = handleKeyPress;
+        window.onkeyup = handleKeyUp;
+    </script>
+</head>
+<body>
+    <p id="fps"></p>
+    <canvas style="border: 20px double darkorchid" id="dvd"/>
+</body>
